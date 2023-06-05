@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script>
+    AFRAME.registerComponent("videohandler", {
+      init: function () {
+        var marker = this.el;
+        this.vid = document.querySelector("#vid");
+
+        marker.addEventListener(
+          "markerFound",
+          function () {
+            this.toggle = true;
+            this.vid.play();
+          }.bind(this)
+        );
+
+        marker.addEventListener(
+          "markerLost",
+          function () {
+            this.toggle = false;
+            this.vid.pause();
+          }.bind(this)
+        );
+      },
+    });
+  </script>
+</head>
+
+<body style="margin: 0; overflow: hidden">
+
+  <a-scene mindar-image="imageTargetSrc: ./mind/targetsMulti.mind" 
+  color-space="sRGB"
+  renderer="colorManagement: true, physicallyCorrectLights" 
+  vr-mode-ui="enabled: false"
+  device-orientation-permission-ui="enabled: false"
+  >
+
+    <a-assets>
+
+      <video id="vid1" src="./video/1.MP4" 
+      preload="auto" 
+      response-type="arraybuffer" 
+      loop 
+      crossorigin
+      webkit-playsinline 
+      autoplay 
+      muted 
+      playsinline>
+      </video>
+    </a-assets>
+
+      <a-video src="#vid" 
+      scale="1 1 1" 
+      position="0 0.1 0" 
+      rotation="-90 0 0" 
+      class="clickable" 
+      gesture-handler
+      >
+      </a-video>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>

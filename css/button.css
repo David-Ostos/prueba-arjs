@@ -1,0 +1,36 @@
+.btn__play:hover,
+.btn__play:focus {
+  -webkit-animation: pulse 1s;
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+}
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ef6eae;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ef6eae;
+  }
+}
+
+button {
+  margin-top: 2rem;
+  color: #ef8f6e;
+  border-radius: 10px;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+button:hover, button:focus {
+  border-color: #ef8f6e;
+  color: white;
+}
+
+button {
+  font-size: 1.5rem;
+  background: none;
+  border: 4px solid;
+  padding: 1em 2em;
+}
